@@ -59,7 +59,7 @@ ImagePreprocessor     DPI check → grayscale → deskew → denoise → binariz
 OCREngine             PaddleOCR → filter noise → column-aware sort → merge tokens → full_text
   │
   ▼
-LayoutModel           LayoutLMv3 → classify each token (FIELD_LABEL, AMOUNT, DATE, ...)
+LLM Extractor         Ollama (llama3.2) → extract structured fields from OCR text → key-value JSON
   │
   ▼
 KeyValueExtractor     Direction-aware spatial pairing → regex fallback → fuzzy schema mapping
@@ -88,7 +88,7 @@ Export (CSV / JSON / Excel)
 | Backend | FastAPI + Uvicorn |
 | Database | SQLite via SQLAlchemy ORM |
 | OCR | PaddleOCR (CPU/GPU) |
-| Layout model | LayoutLMv3 (HuggingFace Transformers) |
+| LLM | Ollama — llama3.2 (local inference) |
 | Task queue | Python `asyncio` background tasks |
 | Desktop shell | PyWebView (WebView2) |
 | Packaging | PyInstaller + Inno Setup |
